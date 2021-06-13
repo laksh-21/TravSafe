@@ -1,9 +1,6 @@
 package com.example.travsafe.home.components
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -17,11 +14,12 @@ fun HomeGreetingSection(){
         modifier = Modifier.fillMaxWidth()
     ){
         Column {
+            Spacer(modifier = Modifier.height(16.dp))
             Text(
                 text = "Hello,",
                 style = MaterialTheme.typography.h4,
-                modifier = Modifier.padding(top = 16.dp)
             )
+            Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = "We only track you when you want us to.",
                 style = MaterialTheme.typography.body1

@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -16,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.fragment.app.viewModels
 import com.example.travsafe.home.components.HomeAppBar
 import com.example.travsafe.home.components.HomeGreetingSection
+import com.example.travsafe.home.components.HomeTrackingSection
 
 class HomeFragment : Fragment() {
 
@@ -34,15 +37,21 @@ class HomeFragment : Fragment() {
                 ){
                     Column(
                         modifier = Modifier
+                            .fillMaxWidth()
+                            .fillMaxHeight()
                             .verticalScroll(rememberScrollState())
                             .padding(start = 16.dp, end = 16.dp)
                     ) {
                         // all the content of the screen goes here
-
                         //Greeting Section
                         HomeGreetingSection()
 
                         //Tracking Section
+                        val travelling = viewModel.isUserTravelling.value
+                        HomeTrackingSection(
+                            travelling = travelling,
+                            onTrackClick = { viewModel.onUserTravellingChanged() }
+                        )
                     }
                 }
             }
