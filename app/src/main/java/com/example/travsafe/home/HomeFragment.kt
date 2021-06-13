@@ -7,10 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.material.Scaffold
 import androidx.compose.ui.platform.ComposeView
-import com.example.travsafe.home.components.BodyContent
+import androidx.fragment.app.viewModels
+import com.example.travsafe.home.components.HomeBodyContent
 import com.example.travsafe.home.components.HomeAppBar
 
 class HomeFragment : Fragment() {
+
+    private val viewModel: HomeViewModel by viewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -22,7 +26,11 @@ class HomeFragment : Fragment() {
                         HomeAppBar(title ="Home")
                     }
                 ){
-                    BodyContent()
+
+                    HomeBodyContent(
+                        selected = viewModel.isUserTravelling.value,
+                        onClick = { viewModel.onUserTravellingChanged() }
+                    )
                 }
             }
         }

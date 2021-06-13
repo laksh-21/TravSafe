@@ -12,13 +12,18 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-fun BodyContent(
+fun HomeBodyContent(
     modifier: Modifier = Modifier,
+    selected: Boolean,
+    onClick: () -> Unit
 ){
     Column(
         modifier = Modifier.verticalScroll(rememberScrollState())
     ) {
-        TravellingButton(selected = true)
+        TravellingButton(
+            selected = selected,
+            onClick = onClick
+        )
     }
 }
 
@@ -26,7 +31,7 @@ fun BodyContent(
 fun TravellingButton(
     modifier: Modifier = Modifier,
     selected: Boolean,
-    onClick: () -> Unit = {}
+    onClick: () -> Unit
 ){
     Button(
         modifier = modifier,
@@ -40,11 +45,11 @@ fun TravellingButton(
 @Preview
 @Composable
 fun TravellingButtonSelected(){
-    TravellingButton(selected = true)
+    TravellingButton(selected = true, onClick = {})
 }
 
 @Preview
 @Composable
 fun TravellingButtonDeselected(){
-    TravellingButton(selected = false)
+    TravellingButton(selected = false, onClick = {})
 }
