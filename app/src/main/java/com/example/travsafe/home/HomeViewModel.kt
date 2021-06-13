@@ -5,7 +5,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 
 class HomeViewModel: ViewModel() {
-    val isUserTravelling: MutableState<Boolean> = mutableStateOf(true)
+
+    // for when the user clicks if they're travelling or not
+    val isUserTravelling: MutableState<Boolean> = mutableStateOf(false)
 
     fun onUserTravellingChanged(){
         isUserTravelling.value = !isUserTravelling.value

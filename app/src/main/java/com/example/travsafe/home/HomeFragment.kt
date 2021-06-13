@@ -5,11 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Scaffold
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.unit.dp
 import androidx.fragment.app.viewModels
-import com.example.travsafe.home.components.HomeBodyContent
 import com.example.travsafe.home.components.HomeAppBar
+import com.example.travsafe.home.components.HomeGreetingSection
 
 class HomeFragment : Fragment() {
 
@@ -26,11 +32,18 @@ class HomeFragment : Fragment() {
                         HomeAppBar(title ="Home")
                     }
                 ){
+                    Column(
+                        modifier = Modifier
+                            .verticalScroll(rememberScrollState())
+                            .padding(start = 16.dp, end = 16.dp)
+                    ) {
+                        // all the content of the screen goes here
 
-                    HomeBodyContent(
-                        selected = viewModel.isUserTravelling.value,
-                        onClick = { viewModel.onUserTravellingChanged() }
-                    )
+                        //Greeting Section
+                        HomeGreetingSection()
+
+                        //Tracking Section
+                    }
                 }
             }
         }
