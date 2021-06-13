@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
 import androidx.compose.ui.platform.ComposeView
+import com.example.travsafe.home.components.BodyContent
 import com.example.travsafe.home.components.HomeAppBar
 
 class HomeFragment : Fragment() {
@@ -19,10 +19,10 @@ class HomeFragment : Fragment() {
             setContent {
                 Scaffold(
                     topBar = {
-                        HomeAppBar("Title here boi")
+                        HomeAppBar(title ="Home")
                     }
                 ){
-                    Text(text = "Hello!")
+                    BodyContent()
                 }
             }
         }
