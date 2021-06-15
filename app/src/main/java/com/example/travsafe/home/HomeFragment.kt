@@ -5,10 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Scaffold
@@ -24,6 +22,7 @@ class HomeFragment : Fragment() {
 
     private val viewModel: HomeViewModel by viewModels()
 
+    @ExperimentalAnimationApi
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -45,13 +44,16 @@ class HomeFragment : Fragment() {
                         // all the content of the screen goes here
                         //Greeting Section
                         HomeGreetingSection()
-
+                        Spacer(modifier = Modifier.height(16.dp))
                         //Tracking Section
                         val travelling = viewModel.isUserTravelling.value
                         HomeTrackingSection(
                             travelling = travelling,
                             onTrackClick = { viewModel.onUserTravellingChanged() }
                         )
+                        Spacer(modifier = Modifier.height(16.dp))
+                        // Contacts Section
+
                     }
                 }
             }
